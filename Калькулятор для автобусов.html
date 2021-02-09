@@ -1,0 +1,44 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    	<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Калькулятор на JavaScript</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+        <script type="text/javascript">
+       /*
+        * Функция подсчета стоимости услуг на создания дизайна сайта
+        */
+        function calc() {
+            //получаем ссылку на элемент Select (Тип дизайна)
+            var type_design = document.getElementById("type_design");
+            //получаем ссылку на элемент input (Кол-во вариантов)
+            var count = document.getElementById("count");
+            //получаем ссылку на элемент span, в него будем писать стоимость дизайна
+            var result = document.getElementById("result"); 
+ 
+            var price = 0;
+            price += parseInt(type_design.options[type_design.selectedIndex].value);
+    
+            price = parseInt(count.value) * price;
+ 
+            result.innerHTML = price;
+        }
+ 
+</script>
+    </head>
+    <body style="position: absolute;top: 50%;left: 50%;">
+        <b>Выберите для чего нужен автобус что бы росчитать стоимость:</b><br/>
+        <select onchange="calc()" id="type_design">
+            <option value="0">Выбрать</option>
+            <option value="350">Поездка почасовая</option>
+            <option value="13">Поездка по км</option>
+           
+        </select><br/>
+      
+       
+        <br/>
+        Кол-во км или часов: <input type="text" id="count" value="1" onchange="calc()" />
+        <div>Стоимость поездки: <span id="result">0</span> грн.</div>
+    </body>
+</html>
